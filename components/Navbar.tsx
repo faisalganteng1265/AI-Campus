@@ -25,7 +25,7 @@ export default function Navbar() {
         <div
           className={`relative transition-all duration-700 ${
             isScrolled
-              ? 'bg-white/95 backdrop-blur-md shadow-2xl rounded-2xl px-6 py-3 shadow-emerald-500/10'
+              ? 'bg-gray-900/95 backdrop-blur-md shadow-2xl rounded-2xl px-6 py-3 shadow-emerald-500/10'
               : 'bg-transparent'
           }`}
           style={{
@@ -68,7 +68,7 @@ export default function Navbar() {
               </div>
               <div className={`transition-all duration-700 ease-out transform ${
                 isScrolled
-                  ? 'text-gray-900 translate-y-0 opacity-100'
+                  ? 'text-white translate-y-0 opacity-100'
                   : 'text-white translate-y-0 opacity-100'
               }`}
               style={{
@@ -85,7 +85,7 @@ export default function Navbar() {
                 href="#features"
                 className={`font-medium transition-all duration-700 ease-out transform ${
                   isScrolled
-                    ? 'text-gray-700 hover:text-emerald-500 translate-y-0 opacity-100'
+                    ? 'text-gray-300 hover:text-emerald-400 translate-y-0 opacity-100'
                     : 'text-white/90 hover:text-emerald-400 translate-y-0 opacity-100'
                 } hover:-translate-y-0.5 hover:scale-105`}
                 style={{
@@ -98,7 +98,7 @@ export default function Navbar() {
                 href="#how-it-works"
                 className={`font-medium transition-all duration-700 ease-out transform ${
                   isScrolled
-                    ? 'text-gray-700 hover:text-emerald-500 translate-y-0 opacity-100'
+                    ? 'text-gray-300 hover:text-emerald-400 translate-y-0 opacity-100'
                     : 'text-white/90 hover:text-emerald-400 translate-y-0 opacity-100'
                 } hover:-translate-y-0.5 hover:scale-105`}
                 style={{
@@ -111,7 +111,7 @@ export default function Navbar() {
                 href="#about"
                 className={`font-medium transition-all duration-700 ease-out transform ${
                   isScrolled
-                    ? 'text-gray-700 hover:text-emerald-500 translate-y-0 opacity-100'
+                    ? 'text-gray-300 hover:text-emerald-400 translate-y-0 opacity-100'
                     : 'text-white/90 hover:text-emerald-400 translate-y-0 opacity-100'
                 } hover:-translate-y-0.5 hover:scale-105`}
                 style={{
@@ -139,7 +139,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button className="md:hidden">
               <svg
-                className={`w-6 h-6 transition-all duration-500 ${isScrolled ? 'text-gray-900' : 'text-white'}`}
+                className={`w-6 h-6 transition-all duration-500 ${isScrolled ? 'text-white' : 'text-white'}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

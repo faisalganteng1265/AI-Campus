@@ -5,10 +5,11 @@ import StatsSection from '@/components/StatsSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import Chatbot from '@/components/Chatbot';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       <Navbar />
       <HeroSection />
       <FeaturesSection />
@@ -16,6 +17,7 @@ export default function Home() {
       <HowItWorksSection />
       <CTASection />
       <Footer />
+      <Chatbot />
     </div>
   );
 }

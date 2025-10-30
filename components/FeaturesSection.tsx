@@ -35,31 +35,31 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section id="features" className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="features" className="py-20 px-6 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       {/* Paint Splatter Effect - Deep Dark Green Blobs (Same Color for Overlap) */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-800 blob-1 opacity-35"></div>
-      <div className="absolute top-10 right-16 w-64 h-64 bg-emerald-800 blob-2 opacity-30"></div>
-      <div className="absolute bottom-32 left-1/4 w-80 h-80 bg-emerald-800 blob-3 opacity-35"></div>
-      <div className="absolute bottom-20 right-20 w-72 h-72 bg-emerald-800 blob-4 opacity-32"></div>
-      <div className="absolute top-1/2 left-1/3 w-68 h-68 bg-emerald-800 blob-5 opacity-28"></div>
-      <div className="absolute top-40 right-1/3 w-60 h-60 bg-emerald-800 blob-1 opacity-30"></div>
-      <div className="absolute bottom-40 left-1/2 w-64 h-64 bg-emerald-800 blob-2 opacity-33"></div>
-      <div className="absolute top-60 left-20 w-56 h-56 bg-emerald-800 blob-3 opacity-28"></div>
-      <div className="absolute bottom-60 right-1/4 w-68 h-68 bg-emerald-800 blob-4 opacity-30"></div>
-      <div className="absolute top-1/3 right-10 w-60 h-60 bg-emerald-800 blob-5 opacity-32"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-900 blob-1 opacity-20"></div>
+      <div className="absolute top-10 right-16 w-64 h-64 bg-emerald-900 blob-2 opacity-15"></div>
+      <div className="absolute bottom-32 left-1/4 w-80 h-80 bg-emerald-900 blob-3 opacity-20"></div>
+      <div className="absolute bottom-20 right-20 w-72 h-72 bg-emerald-900 blob-4 opacity-18"></div>
+      <div className="absolute top-1/2 left-1/3 w-68 h-68 bg-emerald-900 blob-5 opacity-15"></div>
+      <div className="absolute top-40 right-1/3 w-60 h-60 bg-emerald-900 blob-1 opacity-18"></div>
+      <div className="absolute bottom-40 left-1/2 w-64 h-64 bg-emerald-900 blob-2 opacity-20"></div>
+      <div className="absolute top-60 left-20 w-56 h-56 bg-emerald-900 blob-3 opacity-15"></div>
+      <div className="absolute bottom-60 right-1/4 w-68 h-68 bg-emerald-900 blob-4 opacity-18"></div>
+      <div className="absolute top-1/3 right-10 w-60 h-60 bg-emerald-900 blob-5 opacity-20"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl mb-4 text-emerald-800" style={{ fontFamily: 'Bungee, sans-serif', letterSpacing: '0.02em' }}>
+          <h2 className="text-5xl md:text-6xl mb-4 text-emerald-400" style={{ fontFamily: 'Bungee, sans-serif', letterSpacing: '0.02em' }}>
             Ada Fitur Apa Aja Sih?
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Fitur-fitur canggih yang dirancang khusus untuk memudahkan kehidupan kampusmu
           </p>
         </div>
 
         {/* CardSwap Implementation */}
-        <div className="flex justify-end items-center min-h-[600px] pr-20">
+        <div className="flex justify-end items-center min-h-[600px] pl-250">
           <CardSwap
             width={450}
             height={350}
