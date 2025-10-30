@@ -102,3 +102,49 @@ body {
 .animate-slow-zoom {
   animation: slow-zoom 20s ease-in-out infinite;
 }
+
+/* CardSwap Styles */
+.card-swap-container {
+  position: relative;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+}
+
+.card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  cursor: default;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s ease;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.card.card-active {
+  z-index: 9999 !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Organic Blob Shapes */
+.blob-1 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.blob-2 {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.blob-3 {
+  border-radius: 70% 30% 50% 50% / 30% 50% 50% 70%;
+}
+
+.blob-4 {
+  border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+}
+
+.blob-5 {
+  border-radius: 50% 50% 30% 70% / 40% 60% 40% 60%;
+}
