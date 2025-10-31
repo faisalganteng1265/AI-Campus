@@ -18,9 +18,7 @@ function StatItem({ end, label, suffix = '', icon }: StatItemProps) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
@@ -37,7 +35,10 @@ function StatItem({ end, label, suffix = '', icon }: StatItemProps) {
   }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible) {
+      setCount(0);
+      return;
+    }
 
     const duration = 2000; // 2 seconds
     const steps = 60;
@@ -78,12 +79,12 @@ function StatItem({ end, label, suffix = '', icon }: StatItemProps) {
             </div>
 
             {/* Counter */}
-            <div className="text-5xl md:text-6xl font-bold text-white">
+            <div className="text-5xl md:text-6xl font-bold text-white" style={{ fontFamily: 'Bungee, sans-serif' }}>
               {count}{suffix}
             </div>
 
             {/* Label */}
-            <div className="text-lg text-emerald-200/90 font-medium">{label}</div>
+            <div className="text-lg text-emerald-200/90 font-medium" style={{ fontFamily: 'Bungee, sans-serif' }}>{label}</div>
           </div>
         </div>
       </ElectricBorder>
