@@ -14,6 +14,7 @@ interface StatItemProps {
 function StatItem({ end, label, suffix = '', icon }: StatItemProps) {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [rainDrops, setRainDrops] = useState<Array<{ id: number; x: number }>>([]);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -58,6 +59,23 @@ function StatItem({ end, label, suffix = '', icon }: StatItemProps) {
     return () => clearInterval(timer);
   }, [isVisible, end]);
 
+  // Rain drop effect on box - synchronized with background rain
+  useEffect(() => {
+    const addRainDrop = () => {
+      const id = Date.now();
+      const x = Math.random() * 100;
+      setRainDrops((prev) => [...prev, { id, x }]);
+
+      setTimeout(() => {
+        setRainDrops((prev) => prev.filter((drop) => drop.id !== id));
+      }, 1000);
+    };
+
+    // More frequent drops to match background rain (every 0.5-1.5 seconds)
+    const interval = setInterval(addRainDrop, 500 + Math.random() * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div ref={ref} className="group hover:-translate-y-1 transition-all duration-300">
       <ElectricBorder
@@ -68,7 +86,22 @@ function StatItem({ end, label, suffix = '', icon }: StatItemProps) {
         className="h-full"
         style={{ borderRadius: '1rem' }}
       >
-        <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 h-full">
+        <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 h-full overflow-hidden">
+          {/* Rain drops hitting the box */}
+          {rainDrops.map((drop) => (
+            <div key={drop.id} className="absolute top-0" style={{ left: `${drop.x}%` }}>
+              {/* Water drop */}
+              <div className="w-1 h-3 bg-emerald-400 rounded-full animate-drop-fall" />
+
+              {/* Ripple effect on impact */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2">
+                <div className="w-4 h-4 border-2 border-emerald-400/60 rounded-full animate-ripple" />
+                <div className="w-4 h-4 border-2 border-emerald-400/40 rounded-full animate-ripple" style={{ animationDelay: '0.1s' }} />
+                <div className="w-4 h-4 border-2 border-emerald-400/20 rounded-full animate-ripple" style={{ animationDelay: '0.2s' }} />
+              </div>
+            </div>
+          ))}
+
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
           <div className="relative z-10 text-center space-y-4">
@@ -478,6 +511,36 @@ export default function FeaturesSection() {
             transform: translateY(100vh);
             opacity: 0.3;
           }
+        }
+
+        @keyframes drop-fall {
+          0% {
+            transform: translateY(-20px);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 0;
+          }
+        }
+
+        @keyframes ripple {
+          0% {
+            transform: scale(0);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(3);
+            opacity: 0;
+          }
+        }
+
+        :global(.animate-drop-fall) {
+          animation: drop-fall 0.3s ease-out forwards;
+        }
+
+        :global(.animate-ripple) {
+          animation: ripple 0.6s ease-out forwards;
         }
 
         .blob-1 {
