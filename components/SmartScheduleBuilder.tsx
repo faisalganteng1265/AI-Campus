@@ -259,13 +259,19 @@ export default function SmartScheduleBuilder() {
         {/* Input Tab */}
         {activeTab === 'input' && (
           <div className="space-y-6">
-            {/* Add Course Section */}
-            <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <span>📚</span>
-                Tambah Jadwal Kuliah (Fixed Time)
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              ✨ Input Jadwal & Kegiatan
+            </h2>
+
+            {/* Two Column Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Left Column - Add Course Section */}
+              <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span>📚</span>
+                  Tambah Jadwal Kuliah
+                </h3>
+              <div className="grid grid-cols-1 gap-4 mb-4">
                 <input
                   type="text"
                   placeholder="Nama Mata Kuliah"
@@ -282,30 +288,32 @@ export default function SmartScheduleBuilder() {
                     <option key={day} value={day}>{day}</option>
                   ))}
                 </select>
-                <select
-                  value={newCourse.startTime}
-                  onChange={(e) => setNewCourse({ ...newCourse, startTime: e.target.value })}
-                  className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  {timeSlots.map(time => (
-                    <option key={time} value={time}>{time}</option>
-                  ))}
-                </select>
-                <select
-                  value={newCourse.endTime}
-                  onChange={(e) => setNewCourse({ ...newCourse, endTime: e.target.value })}
-                  className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  {timeSlots.map(time => (
-                    <option key={time} value={time}>{time}</option>
-                  ))}
-                </select>
+                <div className="grid grid-cols-2 gap-4">
+                  <select
+                    value={newCourse.startTime}
+                    onChange={(e) => setNewCourse({ ...newCourse, startTime: e.target.value })}
+                    className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    {timeSlots.map(time => (
+                      <option key={time} value={time}>{time}</option>
+                    ))}
+                  </select>
+                  <select
+                    value={newCourse.endTime}
+                    onChange={(e) => setNewCourse({ ...newCourse, endTime: e.target.value })}
+                    className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    {timeSlots.map(time => (
+                      <option key={time} value={time}>{time}</option>
+                    ))}
+                  </select>
+                </div>
                 <input
                   type="text"
                   placeholder="Lokasi/Keterangan"
                   value={newCourse.description}
                   onChange={(e) => setNewCourse({ ...newCourse, description: e.target.value })}
-                  className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 md:col-span-2"
+                  className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <button
@@ -341,16 +349,16 @@ export default function SmartScheduleBuilder() {
                   ))}
                 </div>
               )}
-            </div>
+              </div>
 
-            {/* Add Activity Section */}
-            <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <span>🎯</span>
-                Tambah Kegiatan
-              </h2>
+              {/* Right Column - Add Activity Section */}
+              <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span>🎯</span>
+                  Tambah Kegiatan
+                </h3>
 
-              {/* Activity Mode Toggle */}
+                {/* Activity Mode Toggle */}
               <div className="flex gap-3 mb-6">
                 <button
                   onClick={() => setActivityMode('flexible')}
@@ -380,7 +388,7 @@ export default function SmartScheduleBuilder() {
 
               {/* Flexible Activity Form */}
               {activityMode === 'flexible' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                <div className="grid grid-cols-1 gap-4 mb-4">
                   <input
                     type="text"
                     placeholder="Nama Kegiatan (misal: Belajar, Rapat)"
@@ -424,14 +432,14 @@ export default function SmartScheduleBuilder() {
                     placeholder="Keterangan (opsional)"
                     value={newActivity.description}
                     onChange={(e) => setNewActivity({ ...newActivity, description: e.target.value })}
-                    className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 md:col-span-2"
+                    className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
                 </div>
               )}
 
               {/* Specific Time Activity Form */}
               {activityMode === 'specific' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                <div className="grid grid-cols-1 gap-4 mb-4">
                   <input
                     type="text"
                     placeholder="Nama Kegiatan (misal: Rapat BEM)"
@@ -473,7 +481,7 @@ export default function SmartScheduleBuilder() {
                     placeholder="Keterangan (opsional)"
                     value={newActivity.description}
                     onChange={(e) => setNewActivity({ ...newActivity, description: e.target.value })}
-                    className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500 md:col-span-2"
+                    className="bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
               )}
@@ -522,9 +530,10 @@ export default function SmartScheduleBuilder() {
                   ))}
                 </div>
               )}
+              </div>
             </div>
 
-            {/* Generate Button */}
+            {/* Generate Button - Full Width Below Grid */}
             <button
               onClick={generateSchedule}
               disabled={isLoading || (courses.length === 0 && activities.length === 0)}
