@@ -43,7 +43,7 @@ export default function HowItWorksSection() {
   }, []);
 
   return (
-    <section id="how-it-works" className="py-32 px-6 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+    <section id="how-it-works" className="py-20 px-6 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
       {/* Rain Effect */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {rainDrops.map((drop) => (
@@ -118,7 +118,16 @@ export default function HowItWorksSection() {
           </div>
 
           {/* Step 2 - Middle (Medium Box) */}
-          <div className="w-full md:mt-38">
+          <div className="w-full md:mt-0">
+            {/* "Cara Kerja" Text (no box) */}
+            <div className="mb-20 flex justify-center">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold bg-white bg-clip-text text-transparent" style={{ fontFamily: 'Bungee, sans-serif' }}>
+                CARA 
+              </p>
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bungee, sans-serif' }}>
+                KERJA
+              </p>
+            </div>
             <div className="group relative">
               <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/30 animate-box-pulse-2">
                 {/* Number Badge */}
