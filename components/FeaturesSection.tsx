@@ -203,7 +203,58 @@ export default function FeaturesSection() {
           {/* Line with Dot */}
           <div className="flex items-center">
             <div className="flex-1 h-0.5 bg-emerald-500" style={{ marginLeft: '-100vw' }}></div>
-            <div className="w-8 h-4 rounded-full bg-emerald-500 border-4 border-gray-900"></div>
+            <div className="relative">
+              {/* Main dot */}
+              <div className="w-8 h-4 rounded-full bg-emerald-500 relative z-10"></div>
+
+              {/* Spotlight effect pointing to stats section */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none overflow-visible" style={{ width: '1px', height: '1px' }}>
+                {/* Triangular spotlight beam - cone shape pointing downward to stats */}
+                <div className="absolute spotlight-beam" style={{
+                  width: '0',
+                  height: '0',
+                  borderLeft: '600px solid transparent',
+                  borderRight: '600px solid transparent',
+                  borderTop: '450px solid rgba(16, 185, 129, 0.12)',
+                  filter: 'blur(80px)',
+                  left: '50%',
+                  top: '0px',
+                  transform: 'translateX(-50%)',
+                }}></div>
+
+                {/* Second layer for depth */}
+                <div className="absolute spotlight-beam" style={{
+                  width: '0',
+                  height: '0',
+                  borderLeft: '500px solid transparent',
+                  borderRight: '500px solid transparent',
+                  borderTop: '400px solid rgba(16, 185, 129, 0.18)',
+                  filter: 'blur(50px)',
+                  left: '50%',
+                  top: '0px',
+                  transform: 'translateX(-50%)',
+                  animationDelay: '0.5s',
+                }}></div>
+
+                {/* Inner cone - brightest */}
+                <div className="absolute spotlight-beam" style={{
+                  width: '0',
+                  height: '0',
+                  borderLeft: '350px solid transparent',
+                  borderRight: '350px solid transparent',
+                  borderTop: '350px solid rgba(16, 185, 129, 0.22)',
+                  filter: 'blur(35px)',
+                  left: '50%',
+                  top: '0px',
+                  transform: 'translateX(-50%)',
+                  animationDelay: '1s',
+                }}></div>
+
+                {/* Pulsing glow from circles - light source */}
+                <div className="absolute w-32 h-32 bg-emerald-500/30 rounded-full blur-3xl animate-pulse" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}></div>
+                <div className="absolute w-20 h-20 bg-emerald-400/40 rounded-full blur-xl animate-pulse" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)', animationDelay: '0.5s' }}></div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -535,12 +586,25 @@ export default function FeaturesSection() {
           }
         }
 
+        @keyframes spotlight-sweep {
+          0%, 100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+
         :global(.animate-drop-fall) {
           animation: drop-fall 0.3s ease-out forwards;
         }
 
         :global(.animate-ripple) {
           animation: ripple 0.6s ease-out forwards;
+        }
+
+        :global(.spotlight-beam) {
+          animation: spotlight-sweep 3s ease-in-out infinite;
         }
 
         .blob-1 {
