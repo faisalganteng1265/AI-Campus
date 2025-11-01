@@ -13,7 +13,6 @@ export default function Home() {
       <HeroSection />
       <FeaturesSection />
       <HowItWorksSection />
-      <CTASection />
       <Footer />
       <Chatbot />
     </div>

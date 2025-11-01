@@ -124,14 +124,17 @@ export default function FeaturesSection() {
   const pauseFunctionRef = useRef<(() => void) | null>(null);
   const resumeFunctionRef = useRef<(() => void) | null>(null);
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
+  const [rainDrops, setRainDrops] = useState<Array<{ id: number; left: number; delay: number; duration: number }>>([]);
 
-  // Generate rain drops
-  const rainDrops = Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    left: Math.random() * 100,
-    delay: Math.random() * 2,
-    duration: 1 + Math.random() * 1,
-  }));
+  // Generate rain drops on client side only
+  useEffect(() => {
+    setRainDrops(Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 2,
+      duration: 1 + Math.random() * 1,
+    })));
+  }, []);
 
   const handleSwapTrigger = (swapFn: () => void) => {
     swapFunctionRef.current = swapFn;
